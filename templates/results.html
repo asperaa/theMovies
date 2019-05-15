@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="jquery-latest.js"></script>
+    <script type="text/javascript" src="jquery.tablesorter.js"></script>
+    <style>
+#header {
+    background-color:lightseagreen;
+    color:white;
+    text-align:center;
+    padding:5px;
+}
+#nav {
+    line-height:30px;
+    background-color:#eeeeee;
+    height:300px;
+    width:150px;
+    float:left;
+    padding:5px;
+}
+#section {
+    width:500px;
+    float:left;
+    padding:10px;
+}
+#footer {
+    background-color:lightseagreen;
+    color:white;
+    clear:both;
+    text-align:center;
+   padding:5px;
+}
+</style>
+</head>
+<body>
+
+<div id="header">
+<h1>Simple Movie Search</h1>
+</div>
+
+<div id="nav">
+    <a href="..">Home</a><br>
+    <!--<a href="../listmovie/">List All Movies</a><br>-->
+    <a href="../searchmovie">Search Movie</a><br>
+    <!--<a href="../addmovieform/">Add New Movie</a><br>-->
+<br>
+</div>
+
+
+<div id="section">
+    <h1>The Search Results for: {{ movie_name }} </h1>
+    <table id="myTable" style="width:150%" class="tablesorter">
+    <thead>
+    <tr>
+        <th>Movie Title</th>
+        <!--<th>Director</th>-->
+        <!--<th>Genre</th>-->
+        <!--<th>Language</th>-->
+     </tr>
+    </thead>
+    <tbody>
+     {% for movie_title,movie_id in zipped_movies %}
+        <tr>
+            <td align="center" width="40"> <a href="{% url 'detail_movie' value=movie_id %}">{{ movie_title}}</a></td>
+            <!--<td align="center" width="15">{{ movie_dict.movie_object.director}}</td>-->
+            <!--<td align="center" width="10">{{ movie_dict.movie_object.genre}}</td>-->
+        <!--<td align="center" width="12">{{ movie_dict.movie_object.language}}</td>-->
+        </tr>
+
+     {% endfor %}
+    <tbody>
+    </table>
+
+</div>
+
+<div id="footer">
+
+</div>
+
+</body>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+#header {
+    background-color:lightseagreen;
+    color:white;
+    text-align:center;
+    padding:5px;
+}
+#nav {
+    line-height:30px;
+    background-color:#eeeeee;
+    height:300px;
+    width:150px;
+    float:left;
+    padding:5px;
+}
+#section {
+    width:350px;
+    float:left;
+    padding:10px;
+}
+#footer {
+    background-color:lightseagreen;
+    color:white;
+    clear:both;
+    text-align:center;
+   padding:5px;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+</style>
+</head>
+<body>
+
+<div id="header">
+<h1>Simple Movie Search</h1>
+</div>
+
+<div id="nav">
+    <!--<a href="..">Home</a><br>-->
+    <!--<a href="">List All Movies</a><br>-->
+    <a href="/searchmovie/">Search Movie</a><br>
+    <!--<a href="../addmovieform/">Add New Movie</a><br>-->
+<br>
+</div>
+
+
+<div id="section">
+    <h1>Movie Details </h1>
+ <!--<table id="myTable" class="tablesorter" style="width:150%">-->
+
+    <!--<tr>-->
+        <!--<th><a href="?sort=title">Movie Title</a></th>-->
+        <!--<th><a href="?sort=director">Runtime</a></th>-->
+        <!--<th><a href="?sort=genre">Genre</a></th>-->
+        <!--<th><a href="?sort=language">Language</a></th>-->
+         <!--<th><a href="?sort=language">    Alt_Title    </a></th>-->
+        <!--<th><a href="?sort=language">   Release_Date   </a></th>-->
+        <!--<th><a href="?sort=language">   Plot_Keywords   </a></th>-->
+
+     <!--</tr>-->
+
+        <!--<tr>-->
+            <!--<td align="top" width="40">{{ name }}</td>-->
+            <!--<td align="top" width="15">{{ runtime }}</td>-->
+            <!--<td align="center" width="10">{{ genre }}</td>-->
+            <!--<td align="center" width="12">{{ language }}</td>-->
+            <!--<td align="center" width="50">{{ alt_title_string }}</td>-->
+            <!--<td align="center" width="50">{{ final_release_string }}</td>-->
+             <!--<td align="center" width="50">{{ keyword_string }}</td>-->
+
+
+        <!--</tr>-->
+
+
+
+<!--</table>-->
+    <table style="width:100%">
+          <tr>
+            <th>Movie_Title:</th>
+            <td>{{ name }}</td>
+          </tr>
+          <tr>
+            <th>Runtime:</th>
+            <td>{{ runtime }}</td>
+          </tr>
+          <tr>
+            <th>Genre:</th>
+            <td>{{ genre }}</td>
+          </tr>
+          <tr>
+            <th>Language:</th>
+            <td>{{ language }}</td>
+          </tr>
+          <tr>
+            <th>Alt_Title:</th>
+            <td>{{alt_title_string}}</td>
+          </tr>
+          <tr>
+            <th>Release_Dates:</th>
+            <td>{{ final_release_string }}</td>
+          </tr>
+          <tr>
+            <th>Plot_Keywords:</th>
+            <td>{{ keyword_string }}</td>
+          </tr>
+        <tr>
+            <th>Movie_Reviews:</th>
+            <td>{% for movie_author,movie_review in zipped_movies_reviews %}
+            Author:{{movie_author}}(<a href={{movie_review}}>Review</a>),
+            {% endfor %}</td>
+        </tr>
+          <tr>
+            <th>Movie_Cast_And_Crew:</th>
+              <td><strong>Cast:</strong>
+                {% for movie_cast_person in movie_cast %}
+                    {{movie_cast_person}},
+                {% endfor %}
+
+                  <strong>Crew:</strong>
+                {% for movie_crew_person in movie_crew %}
+                    {{movie_crew_person}},
+                {% endfor %}
+            </td>
+        </tr>
+        <tr>
+            <th>Images:</th>
+            <td><a href="{{poster_url}}">Poster_Image</a> , <a href="{{backdrop_url}}">Backdrop_Image</a></td>
+
+        </tr>
+           <tr>
+            <th>Trailers:</th>
+            <td>{% for video_url in video_url_list %}
+            <a href={{video_url}}>Link</a>,
+            {% endfor %}</td>
+        </tr>
+
+</table>
+
+</div>
+
+<div id="footer">
+
+</div>
+
+</body>
